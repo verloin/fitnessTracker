@@ -44,7 +44,7 @@ func parsePackage(data string) (int, time.Duration, error) {
 		return 0, 0, fmt.Errorf("parsePackage: failed to parse duration: %w", err)
 	}
 	// Проверка на отрицательную длительность времени
-	if duration.Seconds() < 0 || duration == 0{
+	if duration <= 0 {
 		err := errors.New("parsePackage: negative durations are not allowed")
 		log.Println(err) // Логируем ошибку
 		return 0, 0, err
